@@ -1,4 +1,4 @@
-package main
+package day1
 
 import (
 	"bufio"
@@ -29,10 +29,10 @@ func (h *IntHeap) Pop() any {
 	return out
 }
 
-func main() {
-	file, err := os.Open("./input.txt")
+func Run() {
+	file, err := os.Open("./input/day1.txt")
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("Failed to open input")
 	}
 
 	defer file.Close()

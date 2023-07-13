@@ -1,4 +1,4 @@
-package main
+package day2
 
 import (
 	"bufio"
@@ -101,24 +101,20 @@ func getResult(y, o Move) Result {
 }
 
 func getMoveToPlay(o Move, r Result) (Move, error) {
-	if r == Draw {
+	switch r {
+	case Draw:
 		return o, nil
-	}
-
-	if r == Win {
+	case Win:
 		return winMap[o], nil
-	}
-
-	if r == Lose {
+	case Lose:
 		return loseMap[o], nil
 	}
 
 	return "", errors.New("unexpected strategy")
-
 }
 
-func main() {
-	file, err := os.Open("./input.txt")
+func Run() {
+	file, err := os.Open("./input/day2.txt")
 	if err != nil {
 		log.Fatal("Failed to open input")
 	}
@@ -133,27 +129,27 @@ func main() {
 
 		o, err := parseMove(r[0])
 		if err != nil {
-			log.Fatal("Unexpected move")
+			log.Fatal(err)
 		}
 
 		st, err := parseStrategy(r[1])
 		if err != nil {
-			log.Fatal("Unexpected strategy")
+			log.Fatal(err)
 		}
 
 		m, err := getMoveToPlay(o, st)
 		if err != nil {
-			log.Fatal("Unexpected strategy")
+			log.Fatal(err)
 		}
 
 		rs, err := getResultScore(st)
 		if err != nil {
-			log.Fatal("Unexpected result")
+			log.Fatal(err)
 		}
 
 		ms, err := getMoveScore(m)
 		if err != nil {
-			log.Fatal("Unexpected move")
+			log.Fatal(err)
 		}
 
 		score += rs + ms
