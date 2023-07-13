@@ -3,6 +3,7 @@ package main
 import (
 	"aoc/day1"
 	"aoc/day2"
+	"aoc/day3"
 	"log"
 	"os"
 	"strconv"
@@ -20,5 +21,7 @@ func main() {
 		day1.Run()
 	case 2:
 		day2.Run()
+	case 3:
+		day3.Run()
 	}
 }
