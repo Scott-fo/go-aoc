@@ -5,7 +5,6 @@ import (
 	"bytes"
 	"container/heap"
 	"fmt"
-	"log"
 	"math"
 	"os"
 	"strconv"
@@ -29,10 +28,10 @@ func (h *IntHeap) Pop() any {
 	return out
 }
 
-func Run() {
+func Run() error {
 	file, err := os.Open("./input/day1.txt")
 	if err != nil {
-		log.Fatal("Failed to open input")
+		return fmt.Errorf("Failed to open input")
 	}
 
 	defer file.Close()
@@ -58,7 +57,7 @@ func Run() {
 
 		val, err := strconv.Atoi(scanner.Text())
 		if err != nil {
-			log.Fatal(err)
+			return err
 		}
 
 		elfVal += val
@@ -72,7 +71,7 @@ func Run() {
 	}
 
 	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	sum := 0
@@ -87,4 +86,6 @@ func Run() {
 
 	fmt.Println(max)
 	fmt.Println(sum)
+
+	return nil
 }

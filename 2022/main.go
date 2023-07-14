@@ -4,6 +4,7 @@ import (
 	"aoc/day1"
 	"aoc/day2"
 	"aoc/day3"
+	"aoc/day4"
 	"log"
 	"os"
 	"strconv"
@@ -18,10 +19,16 @@ func main() {
 
 	switch i {
 	case 1:
-		day1.Run()
+		err = day1.Run()
 	case 2:
-		day2.Run()
+		err = day2.Run()
 	case 3:
-		day3.Run()
+		err = day3.Run()
+	case 4:
+		err = day4.Run()
+	}
+
+	if err != nil {
+		log.Fatal(err)
 	}
 }

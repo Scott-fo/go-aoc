@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"errors"
 	"fmt"
-	"log"
 	"os"
 	"strings"
 )
@@ -113,10 +112,10 @@ func getMoveToPlay(o Move, r Result) (Move, error) {
 	return "", errors.New("unexpected strategy")
 }
 
-func Run() {
+func Run() error {
 	file, err := os.Open("./input/day2.txt")
 	if err != nil {
-		log.Fatal("Failed to open input")
+		return fmt.Errorf("Failed to open input")
 	}
 
 	defer file.Close()
@@ -129,31 +128,33 @@ func Run() {
 
 		o, err := parseMove(r[0])
 		if err != nil {
-			log.Fatal(err)
+			return err
 		}
 
 		st, err := parseStrategy(r[1])
 		if err != nil {
-			log.Fatal(err)
+			return err
 		}
 
 		m, err := getMoveToPlay(o, st)
 		if err != nil {
-			log.Fatal(err)
+			return err
 		}
 
 		rs, err := getResultScore(st)
 		if err != nil {
-			log.Fatal(err)
+			return err
 		}
 
 		ms, err := getMoveScore(m)
 		if err != nil {
-			log.Fatal(err)
+			return err
 		}
 
 		score += rs + ms
 	}
 
 	fmt.Println("Score: ", score)
+
+	return nil
 }

@@ -3,7 +3,6 @@ package day3
 import (
 	"bufio"
 	"fmt"
-	"log"
 	"os"
 	"unicode"
 )
@@ -16,10 +15,10 @@ func getIntValue(r rune) int {
 	}
 }
 
-func part1() {
+func part1() error {
 	file, err := os.Open("./input/day3.txt")
 	if err != nil {
-		log.Fatal("Failed to open file")
+		return fmt.Errorf("Failed to open file")
 	}
 
 	sum := 0
@@ -52,12 +51,14 @@ func part1() {
 	}
 
 	fmt.Println(sum)
+
+	return nil
 }
 
-func part2() {
+func part2() error {
 	file, err := os.Open("./input/day3.txt")
 	if err != nil {
-		log.Fatal("Failed to open file")
+		return fmt.Errorf("Failed to open file")
 	}
 
 	sum := 0
@@ -98,8 +99,11 @@ func part2() {
 	}
 
 	fmt.Println(sum)
+
+	return nil
 }
 
-func Run() {
-	part2()
+func Run() error {
+	err := part2()
+	return err
 }
