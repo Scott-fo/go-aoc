@@ -51,7 +51,7 @@ func Run() error {
 			c += 1
 		}
 
-		if max(ll, rl) < min(lh, rh) {
+		if max(ll, rl) <= min(lh, rh) {
 			o += 1
 		}
 	}
