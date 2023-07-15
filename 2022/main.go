@@ -7,6 +7,7 @@ import (
 	"aoc/day4"
 	"aoc/day5"
 	"aoc/day6"
+	"aoc/day7"
 	"log"
 	"os"
 	"strconv"
@@ -32,6 +33,8 @@ func main() {
 		err = day5.Run()
 	case 6:
 		err = day6.Run()
+	case 7:
+		err = day7.Run()
 	}
 
 	if err != nil {
