@@ -2,6 +2,7 @@ package main
 
 import (
 	"aoc/day1"
+	"aoc/day10"
 	"aoc/day2"
 	"aoc/day3"
 	"aoc/day4"
@@ -41,6 +42,8 @@ func main() {
 		err = day8.Run()
 	case 9:
 		err = day9.Run()
+	case 10:
+		err = day10.Run()
 	}
 
 	if err != nil {
