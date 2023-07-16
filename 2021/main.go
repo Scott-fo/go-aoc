@@ -2,6 +2,7 @@ package main
 
 import (
 	"2021/day1"
+	"2021/day2"
 	"log"
 	"os"
 	"strconv"
@@ -17,6 +18,8 @@ func main() {
 	switch i {
 	case 1:
 		err = day1.Run()
+	case 2:
+		err = day2.Run()
 	}
 
 	if err != nil {
